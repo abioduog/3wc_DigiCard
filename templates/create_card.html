@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="preview-container">
+        <div id="previewWrapper">
+            <div id="generatedUrl" style="display: none;">
+                <p>Your card URL:</p>
+                <a href="" id="cardLink" target="_blank"></a>
+            </div>
+            <h2>LIVE PREVIEW</h2>
+            <div id="cardPreview" class="business-card">
+                <!-- Preview content will be dynamically updated here -->
+            </div>
+        </div>
+    </div>
+    <div class="form-container">
+        <h1>Create Your Digital Business Card</h1>
+        <form id="cardForm" method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            
+            <h2>Header attachments</h2>
+            <div class="form-group">
+                {{ form.logo.label }} {{ form.logo }}
+                <small>suggested format: svg, png or gif</small>
+            </div>
+            <div class="form-group">
+                {{ form.cover.label }} {{ form.cover }}
+                <small>suggested format: svg, jpeg, png or gif</small>
+            </div>
+            <small>Recommended cover photo size is 960 x 640 pixels, with an aspect ratio of 3:2</small>
+
+            <h2>Contact information</h2>
+            <div class="form-group">
+                {{ form.photo.label }} {{ form.photo }}
+                <small>suggested format: jpeg, png or gif</small>
+            </div>
+            <small>Recommended profile photo size is 320 x 320 pixels, with an aspect ratio of 1:1</small>
+
+            <div class="form-group">
+                {{ form.fname.label }} {{ form.fname }}
+            </div>
+            <div class="form-group">
+                {{ form.lname.label }} {{ form.lname }}
+            </div>
+            <div class="form-group">
+                {{ form.pronouns.label }} {{ form.pronouns }}
+            </div>
+            <div class="form-group">
+                {{ form.title.label }} {{ form.title }}
+            </div>
+            <div class="form-group">
+                {{ form.biz.label }} {{ form.biz }}
+            </div>
+            <div class="form-group">
+                {{ form.addr.label }} {{ form.addr }}
+            </div>
+            <div class="form-group">
+                {{ form.desc.label }} {{ form.desc }}
+            </div>
+            <div class="form-group">
+                {{ form.key.label }} {{ form.key }}
+            </div>
+            <div class="form-group">
+                {{ form.tracker.label }} {{ form.tracker }}
+            </div>
+            <div class="form-group">
+                {{ form.font_link.label }} {{ form.font_link }}
+            </div>
+            <div class="form-group">
+                {{ form.font_css.label }} {{ form.font_css }}
+            </div>
+            <div class="form-group">
+                {{ form.hosted_url.label }} {{ form.hosted_url }}
+            </div>
+            <div class="form-group">
+                {{ form.footer_credit.label }} {{ form.footer_credit }}
+            </div>
+
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('cardForm');
+    const preview = document.getElementById('cardPreview');
+    const generatedUrl = document.getElementById('generatedUrl');
+    const cardLink = document.getElementById('cardLink');
+
+    function updatePreview() {
+        const formData = new FormData(form);
+        preview.innerHTML = `
+            <h2>${formData.get('fname') || 'First'} ${formData.get('lname') || 'Last'}</h2>
+            ${formData.get('pronouns') ? `<p>${formData.get('pronouns')}</p>` : ''}
+            ${formData.get('title') ? `<p>${formData.get('title')}</p>` : ''}
+            ${formData.get('biz') ? `<p>${formData.get('biz')}</p>` : ''}
+            ${formData.get('addr') ? `<p>${formData.get('addr')}</p>` : ''}
+            ${formData.get('desc') ? `<p>${formData.get('desc')}</p>` : ''}
+        `;
+    }
+
+    form.addEventListener('input', updatePreview);
+    updatePreview(); // Initial preview
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        
+        fetch('/create_card', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                cardLink.href = data.url;
+                cardLink.textContent = data.url;
+                generatedUrl.style.display = 'block';
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

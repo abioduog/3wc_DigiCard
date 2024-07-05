@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+    <h1>3wc_DigiCard</h1>
+</header>
+<section class="hero">
+    <div class="hero-content">
+        <h2>Create Your Own Digital Business Card</h2>
+        <p>Showcase your brand, connect instantly with a tap <br> and generate profitable leads.</p>
+        <a href="{{ url_for('create_card') }}" class="cta-button">Get Started</a>
+    </div>
+</section>
+<section class="features">
+    <h2>Key Features</h2>
+    <div class="card-container">
+        <div class="feature-card">
+            <h3>Customizable Templates</h3>
+            <p>Choose from a variety of professionally designed templates.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Interactive Elements</h3>
+            <p>Add social media links, contact forms, and more.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Easy Sharing</h3>
+            <p>Share your digital card via SMS, Whatsapp, <br> QR code, email, or social media.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block footer %}
+<footer>
+    <p>&copy; 2024 3wc_DigiCard</p>
+</footer>
+{% endblock %}

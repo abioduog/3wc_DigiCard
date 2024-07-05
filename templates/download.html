@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ card.fname }} {{ card.lname }}'s Business Card</title>
+    <link rel="stylesheet" href="style.min.css">
+</head>
+<body>
+    <div class="business-card">
+        <img src="logo.png" alt="Logo">
+        <h2>{{ card.fname }} {{ card.lname }}</h2>
+        <p>{{ card.title }}</p>
+        <p>{{ card.biz }}</p>
+        <p>{{ card.addr }}</p>
+        <p>{{ card.desc }}</p>
+        <p>{{ card.key }}</p>
+        <p>{{ card.tracker }}</p>
+        <img src="photo.png" alt="Profile Photo">
+        <img src="cover.png" alt="Cover Photo">
+    </div>
+    <script src="qrcode.min.js"></script>
+</body>
+</html>

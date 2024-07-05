@@ -1,0 +1,261 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #1c1e26;
+    color: #ffffff;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.form-container {
+    width: 60%;
+    padding-right: 20px;
+}
+
+.preview-container {
+    width: 40%;
+    position: relative;
+}
+
+#previewWrapper {
+    position: sticky;
+    top: 20px;
+    background-color: #2a2e3a;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.business-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+h1, h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #a0a0a0;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"],
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #3a3f4b;
+    border-radius: 4px;
+    background-color: #2a2e3a;
+    color: #ffffff;
+}
+
+.btn {
+    display: inline-block;
+    background: #4caf50;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.btn:hover {
+    background: #45a049;
+}
+
+small {
+    color: #a0a0a0;
+    display: block;
+    margin-top: 5px;
+}
+
+#generatedUrl {
+    background-color: #2a2e3a;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#generatedUrl p {
+    margin: 0;
+    color: #a0a0a0;
+}
+
+#generatedUrl a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+#generatedUrl a:hover {
+    text-decoration: underline;
+}
+
+/* Styling for file input buttons */
+input[type="file"] {
+    border: none;
+    background-color: #3a3f4b;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+input[type="file"]::before {
+    content: 'Select file';
+    display: inline-block;
+    background: #4caf50;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 10pt;
+}
+
+input[type="file"]:hover::before {
+    background: #45a049;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .form-container,
+    .preview-container {
+        width: 100%;
+        padding-right: 0;
+    }
+    
+    #previewWrapper {
+        position: static;
+    }
+}
+
+/* New styles for the home page */
+header {
+    background-color: #2a2e3a;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    color: #4caf50;
+}
+
+.hero {
+    background-color: #1c1e26;
+    color: #ffffff;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #45a049;
+}
+
+.features {
+    padding: 50px 20px;
+    background-color: #2a2e3a;
+}
+
+.features h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    background-color: #1c1e26;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: calc(33.333% - 20px);
+    box-sizing: border-box;
+}
+
+.feature-card h3 {
+    color: #4caf50;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #1c1e26;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive design for home page */
+@media (max-width: 768px) {
+    .feature-card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-card {
+        width: 100%;
+    }
+}

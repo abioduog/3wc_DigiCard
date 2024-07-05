@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="business-card">
+        <h2>{{ card.fname }} {{ card.lname }}</h2>
+        {% if card.pronouns %}
+        <p>{{ card.pronouns }}</p>
+        {% endif %}
+        <p>{{ card.title }}</p>
+        <p>{{ card.biz }}</p>
+        <p>{{ card.addr }}</p>
+        <p>{{ card.desc }}</p>
+        {% if card.logo %}
+        <img src="{{ url_for('static', filename='uploads/' + card.logo) }}" alt="Logo">
+        {% endif %}
+        {% if card.photo %}
+        <img src="{{ url_for('static', filename='uploads/' + card.photo) }}" alt="Photo">
+        {% endif %}
+        {% if card.cover %}
+        <img src="{{ url_for('static', filename='uploads/' + card.cover) }}" alt="Cover">
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
